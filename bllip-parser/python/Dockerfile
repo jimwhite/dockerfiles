@@ -8,9 +8,9 @@ ENV DISPLAY :1
 
 EXPOSE 5901
 
-COPY userfiles $HOME
+WORKDIR /root
 
-WORKDIR $HOME
+COPY userfiles .
 
 # Install Lynx so there is a way to get web content for dl and copy&paste.
 
