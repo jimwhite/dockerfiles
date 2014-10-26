@@ -18,7 +18,7 @@ I add Firefox and Lynx to the minimal desktop for web access and NumPy since som
 NLTK features can use it.	
 	
 Once you've installed Docker, start me is just:
- 	docker run -it --rm -p 5901:5901 jimwhite/bllip-python
+ 	docker run -it --rm -p 5901:5901 jimwhite/bllip-parser-python
 
 Note that the Docker Hub Registry means you don't even need a manual download step.
 
