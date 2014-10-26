@@ -35,6 +35,9 @@ Or just enter the URL vnc://192.168.59.103:5901 in the Safari location bar.
 That (192.168.59.103) is the default VirtualBox IP address.  You can display it with this command:
 	boot2docker ip
 
+When you're done using this application container, just exit from at the shell prompt:
+	[ root@4683cabf356e:~ ]$ exit
+	
 Docker greatly simplifies running Linux applications and works on most any platform including
 Mac and Windows.  
 	http://docs.docker.com/installation/
