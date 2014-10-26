@@ -1,6 +1,17 @@
 FROM dockerfile/ubuntu-desktop
 MAINTAINER Jim White <mailto:jimwhite@uw.edu>
 
+# Need this for vncserver
+ENV HOME /root
+ENV USER root
+ENV DISPLAY :1
+
+EXPOSE 5901
+
+COPY userfiles $HOME
+
+WORKDIR $HOME
+
 # Install Lynx so there is a way to get web content for dl and copy&paste.
 
 # We won't be training the models so we don't need libLBFGS.
@@ -25,18 +36,8 @@ RUN git clone https://github.com/jimwhite/bllip-parser.git && \
 	make && \
 	./setup.py install
 	
-WORKDIR $HOME
-
-# Need this for vncserver
-ENV USER root
-ENV DISPLAY :1
-
-EXPOSE 5901
-
-COPY userfiles $HOME
-
 # Start me with:
-# 	docker run -it --rm -p 5901:5901 jimwhite/bllip-python
+# 	docker run -it --rm -p 5901:5901 jimwhite/bllip-parser-python
 
 # Then at the prompt you can start VNC if you want graphics:
 #	./runvnc.sh
@@ -46,5 +47,7 @@ COPY userfiles $HOME
 # 	open vnc://192.168.59.103:5901
 # That is the default VirtualBox IP address.  You can display it with this command:
 #	boot2docker ip
+# Which means you could also do this:
+# 	open vnc://`boot2docker ip`:5901
 
 CMD [ "/bin/bash" ]
