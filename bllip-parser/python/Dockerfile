@@ -7,8 +7,8 @@ MAINTAINER Jim White <mailto:jimwhite@uw.edu>
 
 RUN apt update && \
 	apt-get -y install lynx firefox \
-		python-setuptools python-dev python-tk s\
-		wig flex libboost-dev && \
+		python-setuptools python-dev python-tk \
+		swig flex libboost-dev && \
 	easy_install pip && \
 	pip install -U numpy && \
 	pip install -U nltk 
