@@ -3,7 +3,9 @@ MAINTAINER Jim White <mailto:jimwhite@uw.edu>
 
 # Need this for vncserver
 ENV USER root
-ENV HOME /$USER
+# Can't do this (currently) in Dockerfiles: ENV HOME /$USER
+# Also note that ENV does not stop at the comment char (#) in a value.
+ENV HOME /root
 ENV DISPLAY :1
 
 EXPOSE 5901
