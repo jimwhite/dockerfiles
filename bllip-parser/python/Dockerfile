@@ -2,13 +2,13 @@ FROM dockerfile/ubuntu-desktop
 MAINTAINER Jim White <mailto:jimwhite@uw.edu>
 
 # Need this for vncserver
-ENV HOME /root
 ENV USER root
+ENV HOME /$USER
 ENV DISPLAY :1
 
 EXPOSE 5901
 
-WORKDIR /root
+WORKDIR $HOME
 
 COPY userfiles $HOME
 
