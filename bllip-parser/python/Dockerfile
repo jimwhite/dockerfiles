@@ -3,16 +3,14 @@ MAINTAINER Jim White <mailto:jimwhite@uw.edu>
 
 # Need this for vncserver
 ENV USER root
-# Can't do this (currently) in Dockerfiles: ENV HOME /$USER
-# Also note that ENV does not stop at the comment char (#) in a value.
 ENV HOME /root
 ENV DISPLAY :1
 
 EXPOSE 5901
 
-WORKDIR $HOME
+WORKDIR /root
 
-COPY userfiles $HOME
+COPY userfiles /root
 
 # Install Lynx so there is a way to get web content for dl and copy&paste.
 
@@ -32,9 +30,8 @@ RUN apt update && \
 # To clean up the APT files we could remove them like this:
 #	rm -rf /var/lib/apt/lists/*	
 	
-RUN git clone https://github.com/jimwhite/bllip-parser.git && \
+RUN git clone https://github.com/BLLIP/bllip-parser.git && \
 	cd bllip-parser && \
-	git checkout BLLIP_MASTER && \
 	make && \
 	./setup.py install
 	
@@ -51,5 +48,6 @@ RUN git clone https://github.com/jimwhite/bllip-parser.git && \
 #	boot2docker ip
 # Which means you could also do this:
 # 	open vnc://`boot2docker ip`:5901
+# You can also enter `vnc://192.168.59.103:5901` in the location bar in Safari.
 
-CMD [ "/bin/bash" ]
+CMD [ "/bin/bash", "-login" ]
