@@ -4,9 +4,9 @@ MAINTAINER Jim White <mailto:jimwhite@uw.edu>
 ENV USER root
 ENV HOME /root
 
-WORKDIR $HOME
+WORKDIR /root
 
-COPY userfiles $HOME
+COPY userfiles /root
 
 # The centos-release-SCL and ruby193 (and thus python27) tips from:
 # https://digitalchild.info/centos-6-5-and-ruby1-9-3-via-software-collections/
