@@ -3,7 +3,7 @@ MAINTAINER Jim White <mailto:jimwhite@uw.edu>
 
 # Here I only install tools which we must have:
 RUN yum -y update && \
-	yum -y install wget which git rpm-build tar \
+	yum -y install wget which git rpm-build tar time \
 		gcc gcc-c++ make flex libtool aclocal autoheader automake autoconf \
 		boost-devel && \
 	yum clean all
@@ -21,7 +21,7 @@ RUN	wget https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/sourc
 
 # Get and build the BLLIP parser (but not training programs - leave that to next image).
 WORKDIR /home
-RUN git clone https://github.com/BLLIP/bllip-parser.git && \
+RUN git clone https://github.com/jimwhite/bllip-parser.git && \
 	cd bllip-parser && \
 	make 
 
